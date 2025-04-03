@@ -1,0 +1,20 @@
+class Solution {
+    public Node deleteNode(Node head, int x) {
+      if(head==null) return null;
+      Node temp = head;
+      if(x==1 ){
+          head = temp.next;
+          if(head!=null){
+              head.prev = null;
+          }
+      }
+      for(int i = 1; temp !=null && i<x ;i++ ){
+          temp = temp.next;
+      }
+      if(temp == null ) return null;
+      if(temp.next != null) temp.next.prev = temp.prev;
+      if(temp.prev != null) temp.prev.next = temp.next;
+      return head;
+      
+    }
+}
